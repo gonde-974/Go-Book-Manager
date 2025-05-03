@@ -1,0 +1,150 @@
+/* Основен ресет */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Navbar */
+nav {
+  background-color: #2d3436;
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+nav h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+nav .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+nav .nav-links a:hover {
+  background-color: #636e72;
+}
+
+/* Картички за книги */
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: scale(1.02);
+}
+
+.book-card h3 {
+  color: #2d3436;
+  margin-bottom: 8px;
+}
+
+.book-card p {
+  margin: 2px 0;
+  color: #555;
+}
+
+/* Форма за додавање книги */
+form.add-book-form {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+form.add-book-form input[type="text"],
+form.add-book-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+form.add-book-form button {
+  background-color: #0984e3;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  /* transition: background 0.3s; */
+}
+
+form.add-book-form button:hover {
+  background-color: #74b9ff;
+}
+
+/* Search */
+.search-form {
+  margin-bottom: 20px;
+}
+
+.search-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+.search-form button {
+  padding: 10px 15px;
+  background-color: #00b894;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+  /* transition: background 0.3s; */
+}
+
+.search-form button:hover {
+  background-color: #55efc4;
+}
+
+/* Delete button */
+.delete-button {
+  background-color: #d63031;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+  /* transition: background 0.3s; */
+}
+
+.delete-button:hover {
+  background-color: #ff7675;
+}

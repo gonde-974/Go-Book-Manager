@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>📚 Book Manager</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script>
+        document.addEventListener('htmx:afterRequest', function (evt) {
+            if (evt.target.tagName === 'FORM' && evt.target.getAttribute('hx-post') === '/add') {
+                evt.target.reset();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <h1>📚 Book Manager</h1>
+    </nav>
+
+    <main class="container">
+        <!-- Форма за додавање книга -->
+        <section class="form-section">
+            <form hx-post="/add" hx-target="#book-list" hx-swap="outerHTML">
+                <input type="text" name="title" placeholder="Title" required>
+                <input type="text" name="author" placeholder="Author" required>
+                <input type="number" name="year" placeholder="Year" required>
+                <button type="submit">➕ Add</button>
+            </form>
+        </section>
+
+        <!-- Форма за пребарување книги -->
+        <section class="form-section">
+            <form hx-get="/search" hx-target="#book-list" hx-swap="outerHTML">
+                <input type="text" name="author" placeholder="Search by author...">
+                <button type="submit">🔍 Search</button>
+            </form>
+        </section>
+
+        <!-- Листа на книги -->
+        <section id="book-list">
+            {{ template "list.html" . }}
+        </section>
+    </main>
+</body>
+
+</html>

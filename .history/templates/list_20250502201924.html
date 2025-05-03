@@ -1,0 +1,23 @@
+{{ define "list.html" }}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Action</th>
+    </tr>
+    {{ range . }}
+    <tr>
+        <td>{{ .Title }}</td>
+        <td>{{ .Author }}</td>
+        <td>{{ .Year }}</td>
+        <td>
+            <form hx-post="/delete" hx-target="#book-list" hx-swap="outerHTML" style="display:inline;">
+                <input type="hidden" name="id" value="{{ .ID }}">
+                <button type="submit">🗑️ Delete</button>
+            </form>
+        </td>
+    </tr>
+    {{ end }}
+</table>
+{{ end }}

@@ -1,0 +1,12 @@
+<!-- list.html -->
+{{ range . }}
+<div class="book-card">
+    <h3>{{ .Title }}</h3>
+    <p><strong>Author:</strong> {{ .Author }}</p>
+    <p><strong>Year:</strong> {{ .Year }}</p>
+    <form hx-post="/delete" hx-include="this" hx-target="#book-list" hx-swap="outerHTML">
+        <input type="hidden" name="id" value="{{ .ID }}">
+        <button type="submit">❌ Delete</button>
+    </form>
+</div>
+{{ end }}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="mk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>📚 Менаџер за книги</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">📚 Книги</a>
+            <div class="collapse navbar-collapse">
+                <form class="d-flex ms-auto" method="GET" action="/search">
+                    <input class="form-control me-2" type="search" name="author" placeholder="Пребарај по автор"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Пребарај</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main container -->
+    <div class="container">
+
+        <!-- Додади книга -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">➕ Додади нова книга</div>
+            <div class="card-body">
+                <form method="POST" action="/add">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Наслов</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Автор</label>
+                        <input type="text" class="form-control" id="author" name="author" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Година</label>
+                        <input type="number" class="form-control" id="year" name="year" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Додади книга</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Листа на книги -->
+        <div class="card">
+            <div class="card-header bg-secondary text-white">📖 Листа на книги</div>
+            <ul class="list-group list-group-flush">
+                {{range .}}
+                <li class="list-group-item">
+                    <strong>{{.Title}}</strong> — {{.Author}} ({{.Year}})
+                </li>
+                {{else}}
+                <li class="list-group-item text-muted">Нема книги за прикажување.</li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

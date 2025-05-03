@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>📚 Book Manager</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <nav>
+        <h1>📚 Book Manager</h1>
+    </nav>
+
+    <section>
+        <form hx-post="/add" hx-target="#book-list" hx-swap="outerHTML">
+            <input type="text" name="title" placeholder="Title" required>
+            <input type="text" name="author" placeholder="Author" required>
+            <input type="number" name="year" placeholder="Year" required>
+            <button type="submit">➕ Add</button>
+        </form>
+    </section>
+
+    <section>
+        <form hx-get="/search" hx-target="#book-list" hx-swap="outerHTML">
+            <input type="text" name="author" placeholder="Search by author...">
+            <button type="submit">🔍 Search</button>
+        </form>
+    </section>
+
+    <section id="book-list">
+        {{ template "list.html" . }}
+    </section>
+
+    <script>
+        // Clear the form fields after submission
+        function clearForm() {
+            document.getElementById('title').value = '';
+            document.getElementById('author').value = '';
+            document.getElementById('year').value = '';
+        }
+    </script>
+</body>
+
+</html>
